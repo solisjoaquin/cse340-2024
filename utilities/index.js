@@ -7,11 +7,11 @@ const Util = {};
 Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications();
   let list = "<ul>";
-  list += '<li><a href="/" title="Home page">Home</a></li>';
+  list += '<li><a class="nav-color" href="/" title="Home page">Home</a></li>';
   data.rows.forEach((row) => {
     list += "<li>";
     list +=
-      '<a href="/inv/type/' +
+      '<a class="nav-color" href="/inv/type/' +
       row.classification_id +
       '" title="See our inventory of ' +
       row.classification_name +
@@ -78,7 +78,7 @@ Util.buildClassificationGrid = async function (data) {
 };
 
 Util.buildVehicleDetails = async (data) => {
-  let details = '<div class="vehicle-details">';
+  let details = '<div class="details-container">';
   if (data) {
     details +=
       '<h1 class="detail-title">' +
@@ -97,16 +97,16 @@ Util.buildVehicleDetails = async (data) => {
       ' on CSE Motors">';
     details += "</div>";
     details += '<div class="vehicle-info">';
-    details += "<span>Description:</span>";
+    details += "<span class='vehicle-info-title'>Description:</span>";
     details += "<p>" + data.inv_description + "</p>";
-    details += "<span>Year:</span>";
+    details += "<span class='vehicle-info-title'>Year:</span>";
     details += "<p>" + data.inv_year + "</p>";
-    details += "<span>Color:</span>";
+    details += "<span class='vehicle-info-title'>Color:</span>";
     details += "<p>" + data.inv_color + "</p>";
-    details += "<span>Miles:</span>";
+    details += "<span class='vehicle-info-title'>Miles:</span>";
     details +=
       "<p>" + new Intl.NumberFormat("en-US").format(data.inv_miles) + "</p>";
-    details += "<span>Price:</span>";
+    details += "<span class='vehicle-info-title'>Price:</span>";
     details +=
       "<p>$ " + new Intl.NumberFormat("en-US").format(data.inv_price) + "</p>";
     details += "</div>";
