@@ -73,9 +73,13 @@ app.use(async (err, req, res, next) => {
 const port = process.env.PORT;
 const host = process.env.HOST;
 
+const appMessage = host
+  ? `App listening on http://${host}:${port}`
+  : "App is up and running";
+
 /* ***********************
  * Log statement to confirm server operation
  *************************/
 app.listen(port, () => {
-  console.log(`app listening on ${host}:${port}`);
+  console.log(appMessage);
 });
